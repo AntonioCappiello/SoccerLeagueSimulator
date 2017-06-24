@@ -64,10 +64,10 @@ public class MatchView extends RelativeLayout {
             return;
         }
 
-        homeTeamIv.setImageResource(R.drawable.barcelona);
+        homeTeamIv.setImageResource(match.homeTeam().logo());
         homeTeamTv.setText(match.homeTeam().name());
 
-        awayTeamIv.setImageResource(R.drawable.barcelona);
+        awayTeamIv.setImageResource(match.awayTeam().logo());
         awayTeamTv.setText(match.awayTeam().name());
 
         matchResultTv.setText(match.homeTeamGoals() +

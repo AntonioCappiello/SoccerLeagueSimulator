@@ -13,6 +13,7 @@ import selantoapps.soccerleaguesimulator.R;
 import selantoapps.soccerleaguesimulator.control.animation.HomeAnimationController;
 import selantoapps.soccerleaguesimulator.model.Match;
 import selantoapps.soccerleaguesimulator.model.Team;
+import selantoapps.soccerleaguesimulator.model.TeamModel;
 import selantoapps.soccerleaguesimulator.view.widget.MatchView;
 
 /**
@@ -63,14 +64,7 @@ public class HomeActivity extends AppCompatActivity {
 
         homeAnimationController = new HomeAnimationController(this, backgroundView, overallStandingsTable, matchViews);
 
-        teams = new Team[4];
-        for (int i = 0; i < 4; i++) {
-            teams[i] = Team.builder()
-                    .setLogo(R.drawable.barcelona)
-                    .setName("Team " + (i+1))
-                    .setStrength(1)
-                    .build();
-        }
+        teams = TeamModel.getInstance().getTeams();
     }
 
     private void showResultViews(boolean shouldShow) {

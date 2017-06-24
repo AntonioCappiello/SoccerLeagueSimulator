@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SoccerLeagueSimulator</string>
+    <string name="me">Antonio Cappiello</string>
+    <string name="presents">presents</string>
+    <string name="app_name_extended">The Soccer League Simulator</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="won">Won</string>
+    <string name="lost">Lost</string>
+    <string name="draw">Draw</string>
+    <string name="scored">Scored</string>
+    <string name="conceded">Conceded</string>
+    <string name="overall">Overall</string>
+    <string name="pts">Pts</string>
+    <string name="view_statistics">View Statistics</string>
+    <string name="play_league">Play League</string>
+
+</resources>

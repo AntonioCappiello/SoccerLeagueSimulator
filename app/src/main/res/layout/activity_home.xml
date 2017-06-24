@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="selantoapps.soccerleaguesimulator.view.HomeActivity">
+
+    <RelativeLayout
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/home_bg" />
+
+    <include
+        android:id="@+id/overall_standings_table"
+        layout="@layout/overall_standings_table" />
+
+    <include
+        android:id="@+id/button_container"
+        layout="@layout/home_call_to_actions" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_container">
+
+        <include layout="@layout/team_match_container" />
+
+    </ScrollView>
+</RelativeLayout>

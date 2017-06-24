@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    tools:showIn="@layout/activity_home">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/barcelona" />
+
+    <TextView
+        style="@style/TableText.Content"
+        android:gravity="center_vertical"
+        android:text="Team Name" />
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        style="@style/TableText.Content"
+        android:text="3" />
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        style="@style/TableText.Content"
+        android:text="1" />
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        style="@style/TableText.Content"
+        android:text="2" />
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        style="@style/TableText.Content"
+        android:text="6" />
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        style="@style/TableText.Content"
+        android:text="10" />
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        style="@style/TableText.Content"
+        android:text="2" />
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        style="@style/TableText.Content"
+        android:text="13" />
+</TableRow>

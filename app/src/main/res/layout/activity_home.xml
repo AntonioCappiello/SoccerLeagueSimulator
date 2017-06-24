@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button_container">
 
-        <include layout="@layout/team_match_container" />
+        <include layout="@layout/matches_container" />
 
     </ScrollView>
 </RelativeLayout>

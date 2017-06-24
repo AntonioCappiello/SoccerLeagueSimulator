@@ -11,6 +11,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import selantoapps.soccerleaguesimulator.R;
 import selantoapps.soccerleaguesimulator.control.animation.HomeAnimationController;
+import selantoapps.soccerleaguesimulator.model.Match;
+import selantoapps.soccerleaguesimulator.model.Team;
+import selantoapps.soccerleaguesimulator.view.widget.MatchView;
 
 /**
  * Created by antoniocappiello on 24/06/17.
@@ -25,26 +28,27 @@ public class HomeActivity extends AppCompatActivity {
     TableLayout overallStandingsTable;
 
     @BindView(R.id.match_1)
-    ViewGroup match1View;
+    MatchView match1View;
 
     @BindView(R.id.match_2)
-    ViewGroup match2View;
+    MatchView match2View;
 
     @BindView(R.id.match_3)
-    ViewGroup match3View;
+    MatchView match3View;
 
     @BindView(R.id.match_4)
-    ViewGroup match4View;
+    MatchView match4View;
 
     @BindView(R.id.match_5)
-    ViewGroup match5View;
+    MatchView match5View;
 
     @BindView(R.id.match_6)
-    ViewGroup match6View;
+    MatchView match6View;
 
-    private ViewGroup[] matchViews;
+    private MatchView[] matchViews;
 
     private HomeAnimationController homeAnimationController;
+    private Team[] teams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +58,19 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
-        matchViews = new ViewGroup[]{match1View, match2View, match3View, match4View, match5View, match6View};
+        matchViews = new MatchView[]{match1View, match2View, match3View, match4View, match5View, match6View};
         showResultViews(false);
 
         homeAnimationController = new HomeAnimationController(this, backgroundView, overallStandingsTable, matchViews);
+
+        teams = new Team[4];
+        for (int i = 0; i < 4; i++) {
+            teams[i] = Team.builder()
+                    .setLogo(R.drawable.barcelona)
+                    .setName("Team " + (i+1))
+                    .setStrength(1)
+                    .build();
+        }
     }
 
     private void showResultViews(boolean shouldShow) {
@@ -77,6 +90,18 @@ public class HomeActivity extends AppCompatActivity {
     @OnClick(R.id.play_btn)
     public void onPlayButtonClicked() {
         showResultViews(true);
+
+        Match match;
+        for (int i = 0; i < 6; i++) {
+            match = Match.builder()
+                    .setHomeTeam(teams[i % 4])
+                    .setAwayTeam(teams[(i + 1) % 4])
+                    .setAwayTeamGoals(3)
+                    .setHomeTeamGoals(1)
+                    .build();
+            matchViews[i].setData(match);
+        }
+
         homeAnimationController.startAnimations();
     }
 

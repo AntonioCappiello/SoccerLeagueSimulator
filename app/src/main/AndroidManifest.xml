@@ -23,7 +23,11 @@
         <activity
             android:name=".view.HomeActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/title_activity_start"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".view.StatisticsActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme" />
     </application>

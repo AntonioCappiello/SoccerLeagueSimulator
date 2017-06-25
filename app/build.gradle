@@ -9,7 +9,7 @@ android {
         applicationId "selantoapps.soccerleaguesimulator"
         minSdkVersion 17 // Min required Android version 4.2 (Jelly Bean)
         targetSdkVersion 25 // Android 7.1 (Nougat)
-        versionCode 1
+        versionCode 2
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -26,8 +26,8 @@ android {
             // Enable splash screen
             buildConfigField "boolean", "SKIP_SPLASH", "false"
             // Enable obfuscation (via Proguard) and resource shrinking for smaller APK size.
-            shrinkResources true
-            minifyEnabled true
+//            shrinkResources true
+//            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

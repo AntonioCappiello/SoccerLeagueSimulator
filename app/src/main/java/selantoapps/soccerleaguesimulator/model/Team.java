@@ -30,4 +30,8 @@ public abstract class Team {
 
     public abstract int strength();
 
+    public String nameExt() {
+        return name() + " (" + strength() + ")";
+    }
+
 }

@@ -65,7 +65,7 @@ public class OverallStandingsRowView extends TableRow {
 
     private void refreshView() {
         logoIv.setImageResource(teamResult.getTeam().logo());
-        nameTv.setText(teamResult.getTeam().name());
+        nameTv.setText(teamResult.getTeam().nameExt());
         wonTv.setText(String.valueOf(teamResult.getWon()));
         lostTv.setText(String.valueOf(teamResult.getLost()));
         drawTv.setText(String.valueOf(teamResult.getDraw()));

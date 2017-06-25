@@ -1,11 +1,9 @@
 # SoccerLeagueSimulator
 Show case example of soccer league simulator.
 
-![Alt text] (/SoccerLeagueSimulator/store_screenshots/1.png?raw=true "image 1")
-
-![Alt text] (/store_screenshots/2.png?raw=true "image 2")
-
-![Alt text] (/store_screenshots/3.png "image 3")
+<img src="/store_screenshots/1.png" width="400">
+<img src="/store_screenshots/2.png" width="400">
+<img src="/store_screenshots/3.png" width="400">
 
 This is a sample project of a game which simulates a soccer league. In particular, in this league there are 4 teams which play against each other, in a total of 6 matches. 
 

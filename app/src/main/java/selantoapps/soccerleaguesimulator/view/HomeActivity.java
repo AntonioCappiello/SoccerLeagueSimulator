@@ -6,10 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import selantoapps.soccerleaguesimulator.R;
+import selantoapps.soccerleaguesimulator.control.GameSimulator;
 import selantoapps.soccerleaguesimulator.control.animation.HomeAnimationController;
 import selantoapps.soccerleaguesimulator.model.Match;
 import selantoapps.soccerleaguesimulator.model.Team;
@@ -49,7 +52,6 @@ public class HomeActivity extends AppCompatActivity {
     private MatchView[] matchViews;
 
     private HomeAnimationController homeAnimationController;
-    private Team[] teams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,6 @@ public class HomeActivity extends AppCompatActivity {
 
         homeAnimationController = new HomeAnimationController(this, backgroundView, overallStandingsTable, matchViews);
 
-        teams = TeamModel.getInstance().getTeams();
     }
 
     private void showResultViews(boolean shouldShow) {
@@ -85,6 +86,8 @@ public class HomeActivity extends AppCompatActivity {
     public void onPlayButtonClicked() {
         showResultViews(true);
 
+        Match[] matches = GameSimulator.getInstance().playMatches();
+        List<Team> teams = TeamModel.getInstance().getTeams();
         Match match;
         for (int i = 0; i < 6; i++) {
             match = new Match(

@@ -1,7 +1,6 @@
 package selantoapps.soccerleaguesimulator.model;
 
-import android.os.Bundle;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import selantoapps.soccerleaguesimulator.R;
@@ -14,7 +13,7 @@ public class TeamModel {
 
     private static TeamModel INSTANCE;
 
-    private final Team[] teams;
+    private final List<Team> teams;
 
     public static TeamModel getInstance() {
         if (INSTANCE == null) {
@@ -24,33 +23,33 @@ public class TeamModel {
     }
 
     private TeamModel() {
-        teams = new Team[4];
-        teams[0] = Team.builder()
+        teams = new ArrayList<>(4);
+        teams.add(Team.builder()
                 .setLogo(R.drawable.team_a)
                 .setName("Team A")
                 .setStrength(1)
-                .build();
+                .build());
 
-        teams[1] = Team.builder()
+        teams.add(Team.builder()
                 .setLogo(R.drawable.team_b)
                 .setName("Team B")
                 .setStrength(1)
-                .build();
+                .build());
 
-        teams[2] = Team.builder()
+        teams.add(Team.builder()
                 .setLogo(R.drawable.team_c)
                 .setName("Team C")
                 .setStrength(1)
-                .build();
+                .build());
 
-        teams[3] = Team.builder()
+        teams.add(Team.builder()
                 .setLogo(R.drawable.team_d)
                 .setName("Team D")
                 .setStrength(1)
-                .build();
+                .build());
     }
 
-    public Team[] getTeams() {
+    public List<Team> getTeams() {
         return teams;
     }
 }

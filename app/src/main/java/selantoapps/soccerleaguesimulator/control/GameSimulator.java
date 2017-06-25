@@ -27,6 +27,7 @@ public class GameSimulator {
     /**
      * Make this class a singleton to reduce memory usage over multiple game played.
      * Teams will not be instantiated every time, but only once.
+     *
      * @return
      */
     public static GameSimulator getInstance() {
@@ -41,11 +42,23 @@ public class GameSimulator {
         random = new Random();
     }
 
-    public List<Match> playMatches() {
+    public List<Match> start() {
         logGameStart();
         List<Match> matches = createMatches();
+        playMatches(matches);
         logGameEnd();
         return matches;
+    }
+
+    private void playMatches(List<Match> matches) {
+        for (Match match : matches) {
+            match.setHomeTeamGoals(
+                    random.nextInt(5)
+            );
+            match.setAwayTeamGoals(
+                    random.nextInt(5)
+            );
+        }
     }
 
     /**

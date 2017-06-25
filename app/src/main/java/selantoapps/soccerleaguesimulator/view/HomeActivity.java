@@ -86,18 +86,13 @@ public class HomeActivity extends AppCompatActivity {
     public void onPlayButtonClicked() {
         showResultViews(true);
 
-        Match[] matches = GameSimulator.getInstance().playMatches();
-        List<Team> teams = TeamModel.getInstance().getTeams();
-        Match match;
-        for (int i = 0; i < 6; i++) {
-            match = new Match(
-                    teams.get(i % 4),
-                    teams.get((i + 1) % 4),
-                    3,
-                    2);
-            matchViews[i].setData(match);
+        // Create games
+        List<Match> matches = GameSimulator.getInstance().start();
+        for (int i = 0; i < matches.size(); i++) {
+            matchViews[i].setData(matches.get(i));
         }
 
+        // Show games
         homeAnimationController.startAnimations();
     }
 

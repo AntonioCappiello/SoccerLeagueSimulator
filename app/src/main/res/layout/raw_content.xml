@@ -1,49 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    tools:showIn="@layout/activity_home">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
+        android:id="@+id/logo_iv"
         android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="5dp"
+        android:layout_height="@dimen/overall_standings_row_height"
         android:scaleType="fitCenter"
-        android:src="@drawable/barcelona" />
+        tools:src="@drawable/barcelona" />
 
-    <TextView
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        android:id="@+id/name_tv"
         style="@style/TableText.Content"
         android:gravity="center_vertical"
-        android:text="Team Name" />
+        tools:text="Team Name" />
 
     <selantoapps.soccerleaguesimulator.view.widget.TextView
+        android:id="@+id/won_tv"
         style="@style/TableText.Content"
-        android:text="3" />
+        android:gravity="center"
+        tools:text="3" />
 
     <selantoapps.soccerleaguesimulator.view.widget.TextView
+        android:id="@+id/lost_tv"
         style="@style/TableText.Content"
-        android:text="1" />
+        android:gravity="center"
+        tools:text="1" />
 
     <selantoapps.soccerleaguesimulator.view.widget.TextView
+        android:id="@+id/draw_tv"
         style="@style/TableText.Content"
-        android:text="2" />
+        android:gravity="center"
+        tools:text="2" />
 
     <selantoapps.soccerleaguesimulator.view.widget.TextView
+        android:id="@+id/scored_tv"
         style="@style/TableText.Content"
-        android:text="6" />
+        android:gravity="center"
+        tools:text="6" />
 
     <selantoapps.soccerleaguesimulator.view.widget.TextView
+        android:id="@+id/conceded_tv"
         style="@style/TableText.Content"
-        android:text="10" />
+        android:gravity="center"
+        tools:text="10" />
 
     <selantoapps.soccerleaguesimulator.view.widget.TextView
+        android:id="@+id/overall_tv"
         style="@style/TableText.Content"
-        android:text="2" />
+        android:gravity="center"
+        tools:text="2" />
 
     <selantoapps.soccerleaguesimulator.view.widget.TextView
+        android:id="@+id/points_tv"
         style="@style/TableText.Content"
-        android:text="13" />
-</TableRow>
+        android:gravity="center"
+        tools:text="13" />
+</merge>

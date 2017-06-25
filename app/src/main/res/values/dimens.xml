@@ -1,2 +1,3 @@
 <resources>
+    <dimen name="overall_standings_row_height">30dp</dimen>
 </resources>

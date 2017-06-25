@@ -64,15 +64,15 @@ public class MatchView extends RelativeLayout {
             return;
         }
 
-        homeTeamIv.setImageResource(match.homeTeam().logo());
-        homeTeamTv.setText(match.homeTeam().name());
+        homeTeamIv.setImageResource(match.getHomeTeam().logo());
+        homeTeamTv.setText(match.getHomeTeam().name());
 
-        awayTeamIv.setImageResource(match.awayTeam().logo());
-        awayTeamTv.setText(match.awayTeam().name());
+        awayTeamIv.setImageResource(match.getAwayTeam().logo());
+        awayTeamTv.setText(match.getAwayTeam().name());
 
-        matchResultTv.setText(match.homeTeamGoals() +
+        matchResultTv.setText(match.getHomeTeamGoals() +
                 "  -  " +
-                match.awayTeamGoals()
+                match.getAwayTeamGoals()
         );
     }
 }

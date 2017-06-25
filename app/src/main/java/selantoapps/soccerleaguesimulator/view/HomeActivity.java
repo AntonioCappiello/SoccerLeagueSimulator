@@ -87,12 +87,11 @@ public class HomeActivity extends AppCompatActivity {
 
         Match match;
         for (int i = 0; i < 6; i++) {
-            match = Match.builder()
-                    .setHomeTeam(teams[i % 4])
-                    .setAwayTeam(teams[(i + 1) % 4])
-                    .setAwayTeamGoals(3)
-                    .setHomeTeamGoals(1)
-                    .build();
+            match = new Match(
+                    teams.get(i % 4),
+                    teams.get((i + 1) % 4),
+                    3,
+                    2);
             matchViews[i].setData(match);
         }
 

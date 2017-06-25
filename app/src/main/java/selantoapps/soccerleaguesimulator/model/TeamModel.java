@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import selantoapps.soccerleaguesimulator.R;
+import selantoapps.soccerleaguesimulator.control.Config;
 
 /**
  * Created by antoniocappiello on 24/06/17.
@@ -27,25 +28,25 @@ public class TeamModel {
         teams.add(Team.builder()
                 .setLogo(R.drawable.team_a)
                 .setName("Team A")
-                .setStrength(1)
+                .setStrength(Config.TEAM_A_STRENGTH)
                 .build());
 
         teams.add(Team.builder()
                 .setLogo(R.drawable.team_b)
                 .setName("Team B")
-                .setStrength(1)
+                .setStrength(Config.TEAM_B_STRENGTH)
                 .build());
 
         teams.add(Team.builder()
                 .setLogo(R.drawable.team_c)
                 .setName("Team C")
-                .setStrength(1)
+                .setStrength(Config.TEAM_C_STRENGTH)
                 .build());
 
         teams.add(Team.builder()
                 .setLogo(R.drawable.team_d)
                 .setName("Team D")
-                .setStrength(1)
+                .setStrength(Config.TEAM_D_STRENGTH)
                 .build());
     }
 

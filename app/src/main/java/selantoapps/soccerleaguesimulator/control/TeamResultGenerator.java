@@ -21,6 +21,10 @@ public class TeamResultGenerator {
     }
 
     public static List<TeamResult> fromMatches(List<Match> matches) {
+        return new ArrayList<>(fromMatchesAsMap(matches).values());
+    }
+
+    public static Map<Team, TeamResult> fromMatchesAsMap(List<Match> matches) {
         List<Team> teams = TeamModel.getInstance().getTeams();
 
         // Initialize map of teams and associated result
@@ -61,7 +65,6 @@ public class TeamResultGenerator {
                     break;
             }
         }
-
-        return new ArrayList<>(map.values());
+        return map;
     }
 }

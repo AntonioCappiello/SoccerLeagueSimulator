@@ -4,11 +4,13 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import selantoapps.soccerleaguesimulator.model.Match;
 import selantoapps.soccerleaguesimulator.model.Team;
 import selantoapps.soccerleaguesimulator.model.TeamModel;
+import selantoapps.soccerleaguesimulator.model.TeamResult;
 
 /**
  * Created by antoniocappiello on 24/06/17.
@@ -44,21 +46,79 @@ public class GameSimulator {
 
     public List<Match> start() {
         logGameStart();
+        logMatchingTeams();
         List<Match> matches = createMatches();
+        logEnd();
+        logPlayingMatches();
         playMatches(matches);
-        logGameEnd();
+        logEnd();
         return matches;
     }
 
     private void playMatches(List<Match> matches) {
         for (Match match : matches) {
-            match.setHomeTeamGoals(
-                    random.nextInt(5)
-            );
-            match.setAwayTeamGoals(
-                    random.nextInt(5)
+            Map<Team, TeamResult> tmpResults = TeamResultGenerator.fromMatchesAsMap(matches);
+            simulateGoals(
+                    match,
+                    match.getHomeTeam(),
+                    match.getAwayTeam(),
+                    tmpResults.get(match.getHomeTeam()), // current league result of home team
+                    tmpResults.get(match.getAwayTeam()), // current league result of away team
+                    Config.MAX_GOALS_BY_TEAM_PER_MATCH
             );
         }
+    }
+
+    private void simulateGoals(Match match, Team homeTeam, Team awayTeam, TeamResult homeTeamCurrentResult, TeamResult awayTeamCurrentResult, int maxGoalsByTeamPerMatch) {
+
+        // Calculate chance to score for each team, relative to the opponent
+
+        // Chance to score is based on:
+
+        // 1. team strength
+        int homeTeamChance = homeTeam.strength();
+        int awayTeamChance = awayTeam.strength();
+
+        // 2. home advantage
+        homeTeamChance += Config.HOME_TEAM_ADVANTAGE;
+
+        // 3. best position in current league
+        if (homeTeamCurrentResult.getPoints() > awayTeamCurrentResult.getPoints()) {
+            homeTeamChance += Config.BEST_LEAGUE_POSITION;
+        } else if (awayTeamCurrentResult.getPoints() > homeTeamCurrentResult.getPoints()) {
+            awayTeamChance += Config.BEST_LEAGUE_POSITION;
+        }
+
+        // 4. most goals
+        if (homeTeamCurrentResult.getScored() > awayTeamCurrentResult.getScored()) {
+            homeTeamChance += Config.MOST_GOAL_SCORED;
+        } else if (awayTeamCurrentResult.getPoints() > homeTeamCurrentResult.getPoints()) {
+            awayTeamChance += Config.MOST_GOAL_SCORED;
+        }
+
+        // Normalize the chances in a scale from 0 to 100;
+        // homeTeamChance (h) + awayTeamChance (a) = 100%
+        // (h+a) : h = 100 : xhome  ==> xhome = 100*h/(h+a)
+        int homeTeamChanceNormalized = 100 * homeTeamChance / (homeTeamChance + awayTeamChance);
+        // (h+a) : a = 100 : xaway  ==> xaway = 100*a/(h+a)
+        int awayTeamChanceNormalized = 100 * awayTeamChance / (homeTeamChance + awayTeamChance);
+
+        int homeTeamGoals = 0;
+        int awayTeamGoals = 0;
+
+        // from 0 to homeTeamChanceNormalized-1 is a goal for the home team
+        // from awayTeamChanceNormalized -1 to 99 is a goal for the away team
+        for (int i = 0; i < maxGoalsByTeamPerMatch; i++) {
+            if (random.nextInt(100) < homeTeamChanceNormalized) {
+                homeTeamGoals++;
+            } else {
+                awayTeamGoals++;
+            }
+        }
+
+        match.setHomeTeamGoals(homeTeamGoals);
+        match.setAwayTeamGoals(awayTeamGoals);
+        logMatchResult(match, homeTeamChanceNormalized, awayTeamChanceNormalized);
     }
 
     /**
@@ -150,12 +210,12 @@ public class GameSimulator {
      * with a nicer formatting.
      *************************************************/
 
-    private void logGameEnd() {
+    private void logEnd() {
         Log.d(TAG, "================================");
     }
 
     private void logGameStart() {
-        Log.d(TAG, " ");
+        Log.d(TAG, "================================");
         Log.d(TAG, "=========== New game ===========");
     }
 
@@ -163,7 +223,22 @@ public class GameSimulator {
         Log.d(TAG, "        " + match.toString());
     }
 
+    private void logMatchResult(Match match, int homeTeamChanceNormalized, int awayTeamChanceNormalized) {
+        logMatch(match);
+        Log.d(TAG, "         (" + homeTeamChanceNormalized + "%) - (" + awayTeamChanceNormalized + "%)");
+        Log.d(TAG, "            " + match.getHomeTeamGoals() + "  -  " + match.getAwayTeamGoals());
+    }
+
     private void logRound(int round) {
         Log.d(TAG, "  --------- Round " + round + " ---------");
+    }
+
+    private void logPlayingMatches() {
+        Log.d(TAG, "----------- Playing -----------");
+
+    }
+
+    private void logMatchingTeams() {
+        Log.d(TAG, "--------- Matching teams -------");
     }
 }

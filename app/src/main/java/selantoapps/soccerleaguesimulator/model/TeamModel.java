@@ -52,4 +52,8 @@ public class TeamModel {
     public List<Team> getTeams() {
         return teams;
     }
+
+    public int getTeamsCount() {
+        return teams.size();
+    }
 }

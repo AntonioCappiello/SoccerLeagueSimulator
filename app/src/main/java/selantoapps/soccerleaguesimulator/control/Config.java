@@ -12,4 +12,8 @@ public class Config {
     public static final long BASIC_ANIMATION_OFFSET = 400;
 
     public static final long HOME_ANIMATION_DURATION = 400;
+
+    public static final int WINNER_POINTS = 3;
+
+    public static final int DRAW_POINTS = 1;
 }

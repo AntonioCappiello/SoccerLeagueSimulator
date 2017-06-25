@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Headers row-->
+
+    <TableRow>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team Name"
+            android:visibility="invisible" />
+
+        <selantoapps.soccerleaguesimulator.view.widget.TextView
+            style="@style/TableText.Header"
+            android:text="@string/won" />
+
+        <selantoapps.soccerleaguesimulator.view.widget.TextView
+            style="@style/TableText.Header"
+            android:text="@string/lost" />
+
+        <selantoapps.soccerleaguesimulator.view.widget.TextView
+            style="@style/TableText.Header"
+            android:text="@string/draw" />
+
+        <selantoapps.soccerleaguesimulator.view.widget.TextView
+            style="@style/TableText.Header"
+            android:text="@string/scored" />
+
+        <selantoapps.soccerleaguesimulator.view.widget.TextView
+            style="@style/TableText.Header"
+            android:text="@string/conceded" />
+
+        <selantoapps.soccerleaguesimulator.view.widget.TextView
+            style="@style/TableText.Header"
+            android:text="@string/overall" />
+
+        <selantoapps.soccerleaguesimulator.view.widget.TextView
+            style="@style/TableText.Header"
+            android:text="@string/pts" />
+
+    </TableRow>
+
+</merge>

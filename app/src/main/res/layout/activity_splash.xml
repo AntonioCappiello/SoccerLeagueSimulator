@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context="selantoapps.soccerleaguesimulator.view.SplashActivity">
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        android:id="@+id/intro_tv"
+        style="@style/SplashScreenText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/me"
+        android:gravity="center"
+        android:visibility="visible"
+        android:textStyle="bold" />
+
+</LinearLayout>

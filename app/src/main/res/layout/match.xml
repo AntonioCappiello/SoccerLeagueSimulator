@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="3dp"
+    android:layout_weight="1"
+    android:background="@drawable/rounded_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/home_team_iv"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        tools:src="@drawable/team_a" />
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        android:id="@+id/home_team_tv"
+        style="@style/MatchOverviewText.TeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_alignBaseline="@id/home_team_iv"
+        android:layout_marginStart="28dp"
+        android:gravity="start|center_vertical"
+        tools:text="Team A" />
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        android:id="@+id/away_team_tv"
+        style="@style/MatchOverviewText.TeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="28dp"
+        android:gravity="start|center_vertical"
+        tools:text="Team B" />
+
+    <ImageView
+        android:id="@+id/away_team_iv"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        tools:src="@drawable/team_b" />
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        android:id="@+id/match_result_tv"
+        style="@style/MatchOverviewText.Goals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        tools:text="1   -   2" />
+
+</RelativeLayout>

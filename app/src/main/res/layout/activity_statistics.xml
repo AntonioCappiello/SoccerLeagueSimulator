@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:background="@drawable/statistics_bg"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_bg"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+        <!--games-->
+        <include layout="@layout/winner" />
+
+        <!--games-->
+        <include layout="@layout/runner_up" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+        <!--games-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <selantoapps.soccerleaguesimulator.view.widget.TextView
+                android:id="@+id/game_count_tv"
+                tool:text="122"
+                style="@style/StatisticCounterText"
+                android:background="@drawable/circle_orange_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/statistics_circle_size" />
+
+            <selantoapps.soccerleaguesimulator.view.widget.TextView
+                style="@style/StatisticNameText"
+                android:layout_marginTop="10dp"
+                android:text="@string/games"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <!--matches-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <selantoapps.soccerleaguesimulator.view.widget.TextView
+                android:id="@+id/match_count_tv"
+                tool:text="122"
+                style="@style/StatisticCounterText"
+                android:background="@drawable/circle_orange_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/statistics_circle_size" />
+
+            <selantoapps.soccerleaguesimulator.view.widget.TextView
+                style="@style/StatisticNameText"
+                android:layout_marginTop="10dp"
+                android:text="@string/matches"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <!--scored-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <selantoapps.soccerleaguesimulator.view.widget.TextView
+                android:id="@+id/scored_count_tv"
+                tool:text="122"
+                style="@style/StatisticCounterText"
+                android:background="@drawable/circle_orange_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/statistics_circle_size" />
+
+            <selantoapps.soccerleaguesimulator.view.widget.TextView
+                style="@style/StatisticNameText"
+                android:layout_marginTop="10dp"
+                android:text="@string/goals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <selantoapps.soccerleaguesimulator.view.widget.OverallStandingsTableView
+            android:id="@+id/statistics_table"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp" />
+
+    </ScrollView>
+
+</LinearLayout>

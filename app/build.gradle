@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "selantoapps.soccerleaguesimulator"
+        minSdkVersion 17 // Min required Android version 4.2 (Jelly Bean)
+        targetSdkVersion 25 // Android 7.1 (Nougat)
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        // This app has two build variants, just for demonstrations purpose
+        debug {
+            // Add suffix to package name to allow parallel installation// on same device
+            applicationIdSuffix ".debug"
+            // Skip long and boring splash screen page during development
+            buildConfigField "boolean", "SKIP_SPLASH", "true"
+        }
+        release {
+            // Enable splash screen
+            buildConfigField "boolean", "SKIP_SPLASH", "false"
+            // Enable obfuscation (via Proguard) and resource shrinking for smaller APK size.
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+ext {
+    // Helps to ensure that all support libs have same version. It prevents conflicts at runtime.
+    supportLibraryVersion = '25.3.1'
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Android support libs
+    compile "com.android.support:appcompat-v7:${supportLibraryVersion}"
+    compile "com.android.support:support-v4:${supportLibraryVersion}"
+    compile "com.android.support:support-compat:${supportLibraryVersion}"
+    compile "com.android.support:design:${supportLibraryVersion}"
+
+    // Field and method binding
+    compile 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+
+    // A publish/subscribe event bus optimized for Android.
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    // Blur lib (Used for example to blur the background of the home screen/leader boards)
+    compile 'jp.wasabeef:blurry:2.1.1'
+
+    provided "com.google.auto.value:auto-value:1.2"
+    annotationProcessor "com.google.auto.value:auto-value:1.2"
+
+}

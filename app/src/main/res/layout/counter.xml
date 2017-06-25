@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:padding="15dp"
+    android:orientation="vertical">
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        tool:text="122"
+        style="@style/StatisticCounterText"
+        android:background="@drawable/circle_orange_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/statistics_circle_size" />
+
+    <selantoapps.soccerleaguesimulator.view.widget.TextView
+        style="@style/StatisticNameText"
+        android:layout_marginTop="10dp"
+        tool:text="Matches"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -127,4 +127,16 @@ public class TeamResult {
     private void updateOverallGoals() {
         overall = scored - conceded;
     }
+
+    @Override
+    public String toString() {
+        return team.name() +
+                ", won=" + won +
+                ", lost=" + lost +
+                ", draw=" + draw +
+                ", scored=" + scored +
+                ", conceded=" + conceded +
+                ", overall=" + overall +
+                ", points=" + points;
+    }
 }

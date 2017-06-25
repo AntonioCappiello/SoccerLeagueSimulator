@@ -8,7 +8,7 @@
         android:layout_width="30dp"
         android:layout_height="@dimen/overall_standings_row_height"
         android:scaleType="fitCenter"
-        tools:src="@drawable/barcelona" />
+        tools:src="@drawable/team_a" />
 
     <selantoapps.soccerleaguesimulator.view.widget.TextView
         android:id="@+id/name_tv"

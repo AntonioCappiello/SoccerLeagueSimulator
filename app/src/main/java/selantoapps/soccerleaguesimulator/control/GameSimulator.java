@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 import selantoapps.soccerleaguesimulator.model.Match;
+import selantoapps.soccerleaguesimulator.model.StatisticsModel;
 import selantoapps.soccerleaguesimulator.model.Team;
 import selantoapps.soccerleaguesimulator.model.TeamModel;
 import selantoapps.soccerleaguesimulator.model.TeamResult;
@@ -66,7 +67,10 @@ public class GameSimulator {
                     tmpResults.get(match.getAwayTeam()), // current league result of away team
                     Config.MAX_GOALS_BY_TEAM_PER_MATCH
             );
+            StatisticsModel.getInstance().addMatch();
+            StatisticsModel.getInstance().addGoals(match.getHomeTeamGoals() + match.getAwayTeamGoals());
         }
+        StatisticsModel.getInstance().addGame();
     }
 
     private void simulateGoals(Match match, Team homeTeam, Team awayTeam, TeamResult homeTeamCurrentResult, TeamResult awayTeamCurrentResult, int maxGoalsByTeamPerMatch) {

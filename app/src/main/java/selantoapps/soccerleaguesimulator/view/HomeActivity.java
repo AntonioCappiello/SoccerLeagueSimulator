@@ -1,11 +1,13 @@
 package selantoapps.soccerleaguesimulator.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -13,6 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import selantoapps.soccerleaguesimulator.R;
 import selantoapps.soccerleaguesimulator.control.GameSimulator;
+import selantoapps.soccerleaguesimulator.control.TeamResultByPointsComparator;
 import selantoapps.soccerleaguesimulator.control.TeamResultGenerator;
 import selantoapps.soccerleaguesimulator.control.animation.HomeAnimationController;
 import selantoapps.soccerleaguesimulator.model.Match;
@@ -97,10 +100,11 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         List<TeamResult> teamResults = TeamResultGenerator.fromMatches(matches);
+        Collections.sort(teamResults, new TeamResultByPointsComparator());
         overallStandingsTable.setData(teamResults);
 
         MatchStatisticsModel.getInstance().update(teamResults);
-        onStatisticsButtonClicked();
+        logStatistics();
 
         // Show games
         homeAnimationController.startAnimations();
@@ -108,6 +112,10 @@ public class HomeActivity extends AppCompatActivity {
 
     @OnClick(R.id.statistics_btn)
     public void onStatisticsButtonClicked() {
+        startActivity(new Intent(this, StatisticsActivity.class));
+    }
+
+    private void logStatistics() {
         Log.i(TAG, "====== Games played: " + MatchStatisticsModel.getInstance().getGamePlayedCount() + " ======");
         List<TeamResult> teamResults = MatchStatisticsModel.getInstance().findAll();
         for (TeamResult teamResult : teamResults) {

@@ -54,7 +54,7 @@ public class HomeAnimationController {
 
         // ...while the overall standing view enter the screen.
         overallStandingsView.startAnimation(
-                AnimationProvider.getHomeAnimation(context, startOffset + Config.HOME_ANIMATION_DURATION * 2, Config.HOME_ANIMATION_DURATION)); //TODO initialize those animation before to improve performance
+                AnimationProvider.getHomeAnimation(context, startOffset + Config.HOME_ANIMATION_DURATION, Config.HOME_ANIMATION_DURATION)); //TODO initialize those animation before to improve performance
     }
 
     private void blurBackground(long offset) {

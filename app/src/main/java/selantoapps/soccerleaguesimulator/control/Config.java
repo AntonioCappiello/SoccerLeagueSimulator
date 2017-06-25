@@ -11,7 +11,7 @@ public class Config {
 
     public static final long BASIC_ANIMATION_OFFSET = 400;
 
-    public static final long HOME_ANIMATION_DURATION = 400;
+    public static final long HOME_ANIMATION_DURATION = 300;
 
     public static final int WINNER_POINTS = 3;
 
@@ -19,11 +19,11 @@ public class Config {
 
     public static final int MAX_GOALS_BY_TEAM_PER_MATCH = 5;
 
-    public static final int HOME_TEAM_ADVANTAGE = 15; // 15 extra advantage of scoring
+    public static final int HOME_TEAM_ADVANTAGE = 15; // extra advantage of scoring
 
-    public static final int BEST_LEAGUE_POSITION = 10; // 10 extra advantage when a team has more points then his rival
+    public static final int BEST_LEAGUE_POSITION = 10; // extra advantage when a team has more points then his rival
 
-    public static final int MOST_GOAL_SCORED = 5; // 5 extra advantage when a team has scored more then his rival
+    public static final int MOST_GOAL_SCORED = 5; // extra advantage when a team has scored more then his rival
 
     public static final int TEAM_A_STRENGTH = 32;
 

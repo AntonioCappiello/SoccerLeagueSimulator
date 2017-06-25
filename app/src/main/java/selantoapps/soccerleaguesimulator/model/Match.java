@@ -82,4 +82,10 @@ public class Match {
         result = 31 * result + awayTeamGoals;
         return result;
     }
+
+    public MatchResultType getResultType() {
+        return homeTeamGoals > awayTeamGoals ? MatchResultType.HOME_TEAM_WIN :
+                awayTeamGoals > homeTeamGoals ? MatchResultType.AWAY_TEAM_WIN :
+                        MatchResultType.DRAW;
+    }
 }

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
 
 import java.util.List;
 
@@ -13,11 +12,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import selantoapps.soccerleaguesimulator.R;
 import selantoapps.soccerleaguesimulator.control.GameSimulator;
+import selantoapps.soccerleaguesimulator.control.TeamResultGenerator;
 import selantoapps.soccerleaguesimulator.control.animation.HomeAnimationController;
 import selantoapps.soccerleaguesimulator.model.Match;
-import selantoapps.soccerleaguesimulator.model.Team;
-import selantoapps.soccerleaguesimulator.model.TeamModel;
+import selantoapps.soccerleaguesimulator.model.TeamResult;
 import selantoapps.soccerleaguesimulator.view.widget.MatchView;
+import selantoapps.soccerleaguesimulator.view.widget.OverallStandingsTableView;
 
 /**
  * Created by antoniocappiello on 24/06/17.
@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     ViewGroup backgroundView;
 
     @BindView(R.id.overall_standings_table)
-    TableLayout overallStandingsTable;
+    OverallStandingsTableView overallStandingsTable;
 
     @BindView(R.id.match_1)
     MatchView match1View;
@@ -87,10 +87,13 @@ public class HomeActivity extends AppCompatActivity {
         showResultViews(true);
 
         // Create games
-        List<Match> matches = GameSimulator.getInstance().start();
+        List<Match> matches = GameSimulator.getInstance().start(); //TODO move to async task
         for (int i = 0; i < matches.size(); i++) {
             matchViews[i].setData(matches.get(i));
         }
+
+        List<TeamResult> teamResults = TeamResultGenerator.fromMatches(matches);
+        overallStandingsTable.setData(teamResults);
 
         // Show games
         homeAnimationController.startAnimations();

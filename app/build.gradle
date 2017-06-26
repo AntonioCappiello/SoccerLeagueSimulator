@@ -9,7 +9,7 @@ android {
         applicationId "selantoapps.soccerleaguesimulator"
         minSdkVersion 17 // Min required Android version 4.2 (Jelly Bean)
         targetSdkVersion 25 // Android 7.1 (Nougat)
-        versionCode 2
+        versionCode 3
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

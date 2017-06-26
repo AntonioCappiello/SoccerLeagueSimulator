@@ -32,4 +32,6 @@ public class Config {
     public static final int TEAM_C_STRENGTH = 76;
 
     public static final int TEAM_D_STRENGTH = 61;
+
+    public static final int NO_SCORE_CHANCE = 35;
 }

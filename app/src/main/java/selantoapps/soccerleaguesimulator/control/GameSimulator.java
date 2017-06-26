@@ -101,28 +101,34 @@ public class GameSimulator {
         }
 
         // Normalize the chances in a scale from 0 to 100;
-        // homeTeamChance (h) + awayTeamChance (a) = 100%
-        // (h+a) : h = 100 : xhome  ==> xhome = 100*h/(h+a)
-        int homeTeamChanceNormalized = 100 * homeTeamChance / (homeTeamChance + awayTeamChance);
-        // (h+a) : a = 100 : xaway  ==> xaway = 100*a/(h+a)
-        int awayTeamChanceNormalized = 100 * awayTeamChance / (homeTeamChance + awayTeamChance);
+        // homeTeamChance (h) + awayTeamChance (a) + noScoreChance(n)= 100%
+        // (h+a+n) : h = 100 : xhome  ==> xhome = 100*h/(h+a+n)
+        int homeTeamChanceNormalized = 100 * homeTeamChance / (homeTeamChance + awayTeamChance + Config.NO_SCORE_CHANCE);
+        // (h+a+n) : a = 100 : xaway  ==> xaway = 100*a/(h+a+n)
+        int awayTeamChanceNormalized = 100 * awayTeamChance / (homeTeamChance + awayTeamChance + Config.NO_SCORE_CHANCE);
+
+        int noScoreChanceNormalized = 100 * Config.NO_SCORE_CHANCE / (homeTeamChance + awayTeamChance + Config.NO_SCORE_CHANCE);
 
         int homeTeamGoals = 0;
         int awayTeamGoals = 0;
-
+        int missedChances = 0;
         // from 0 to homeTeamChanceNormalized-1 is a goal for the home team
-        // from awayTeamChanceNormalized -1 to 99 is a goal for the away team
+        // from awayTeamChanceNormalized - 1 to (homeTeamChanceNormalized + awayTeamChanceNormalized) is a goal for the away team
+        // from homeTeamChanceNormalized - 1 to 99 no goal in this iteration
         for (int i = 0; i < maxGoalsByTeamPerMatch; i++) {
-            if (random.nextInt(100) < homeTeamChanceNormalized) {
+            int result = random.nextInt(100);
+            if (result < homeTeamChanceNormalized) {
                 homeTeamGoals++;
-            } else {
+            } else if (result > homeTeamChanceNormalized - 1 && result < homeTeamChanceNormalized + awayTeamChanceNormalized) {
                 awayTeamGoals++;
+            } else {
+                missedChances++;
             }
         }
 
         match.setHomeTeamGoals(homeTeamGoals);
         match.setAwayTeamGoals(awayTeamGoals);
-        logMatchResult(match, homeTeamChanceNormalized, awayTeamChanceNormalized);
+        logMatchResult(match, homeTeamChanceNormalized, awayTeamChanceNormalized, noScoreChanceNormalized, missedChances);
     }
 
     /**
@@ -227,10 +233,11 @@ public class GameSimulator {
         Log.d(TAG, "        " + match.toString());
     }
 
-    private void logMatchResult(Match match, int homeTeamChanceNormalized, int awayTeamChanceNormalized) {
+    private void logMatchResult(Match match, int homeTeamChanceNormalized, int awayTeamChanceNormalized, int noScoreChanceNormalized, int missedChances) {
         logMatch(match);
         Log.d(TAG, "         (" + homeTeamChanceNormalized + "%) - (" + awayTeamChanceNormalized + "%)");
         Log.d(TAG, "            " + match.getHomeTeamGoals() + "  -  " + match.getAwayTeamGoals());
+        Log.d(TAG, "                        missed chances " + missedChances + " (" + noScoreChanceNormalized + "%)");
     }
 
     private void logRound(int round) {
